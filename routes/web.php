@@ -14,9 +14,7 @@
 */
 
 $router->group(['prefix' => 'testapi/api'], function () use ($router) {
-    $router->get('/', function () use ($router) {
-        return 'Get all products';
-    });
+    $router->get('/', 'ProductController@getAllProducts');
     
     $router->get('/{id}', function ($id) use ($router) {
         return 'Get product details';
