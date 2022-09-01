@@ -20,9 +20,7 @@ $router->group(['prefix' => 'testapi/api'], function () use ($router) {
 
     $router->post('/delete', 'ProductController@deleteProduct');
 
-    $router->post('/create', function () use ($router) {
-        return 'Create a product';
-    });
+    $router->post('/create', 'ProductController@addProduct');
 
     $router->post('/update', function () use ($router) {
         return 'Update a product';

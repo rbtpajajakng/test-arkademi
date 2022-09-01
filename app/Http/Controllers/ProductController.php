@@ -19,13 +19,13 @@ class ProductController extends Controller
     }
 
     public function getAllProducts() {
-        $allProducts = Product::all();
+        $allProducts = Product::select('_id as _product_id', 'product_name', 'price', 'stock', 'category_id')->get();
 
         return response() -> json(['error' => false, 'data' => $allProducts]);
     }
 
     public function getProductDetails($id) {
-        $productDetails = Product::find($id);
+        $productDetails = Product::select('_id as _product_id', 'product_name', 'price', 'stock', 'category_id')->find($id);
 
         return response() -> json(['error' => false, 'data' => $productDetails]);
     }
@@ -33,6 +33,20 @@ class ProductController extends Controller
     public function deleteProduct(Request $request) {
         $product = Product::find($request->_product_id);
         $product->delete();
+
+        return response() -> json(['error' => false, 'success' => true]);
+    }
+
+    public function addProduct(Request $request) {
+        $newProduct = new Product;
+        $newProduct->product_name = $request->product_name;
+        $newProduct->price = $request->price;
+        $newProduct->stock = $request->stock;
+        $newProduct->category_id = $request->category_id;
+        if ($request->_product_id) {
+            $newProduct->_id = $request->_product_id;
+        }
+        $newProduct->save();
 
         return response() -> json(['error' => false, 'success' => true]);
     }
