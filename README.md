@@ -1,3 +1,5 @@
+Link to Google Docs: <https://docs.google.com/document/d/1D_Y2DOYrwiRtGOf2mTkjDHezaNfaG1157ESlWK1sGEI/edit?usp=sharing>
+
 To run:
 1. Clone this repository
 2. Download depedencies
