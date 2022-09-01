@@ -50,4 +50,17 @@ class ProductController extends Controller
 
         return response() -> json(['error' => false, 'success' => true]);
     }
+
+    public function updateProduct(Request $request) {
+        $product = Product::find($request->_product_id);
+        
+        $product->product_name = $request->product_name;
+        $product->price = $request->price;
+        $product->stock = $request->stock;
+        $product->category_id = $request->category_id;
+
+        $product->save();
+
+        return response() -> json(['error' => false, 'success' => true]);
+    }
 }

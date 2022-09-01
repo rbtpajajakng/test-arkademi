@@ -22,9 +22,7 @@ $router->group(['prefix' => 'testapi/api'], function () use ($router) {
 
     $router->post('/create', 'ProductController@addProduct');
 
-    $router->post('/update', function () use ($router) {
-        return 'Update a product';
-    });
+    $router->post('/update', 'ProductController@updateProduct');
 
     $router->post('/login', function () use ($router) {
         return 'Make an existing user login';
