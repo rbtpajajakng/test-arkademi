@@ -28,9 +28,7 @@ $router->group(['prefix' => 'testapi/api'], function () use ($router) {
         return 'Make an existing user login';
     });
 
-    $router->post('/register', function () use ($router) {
-        return 'Register a new user';
-    });
+    $router->post('/register', 'UserController@registerNewUser');
 });
 
 ?>
