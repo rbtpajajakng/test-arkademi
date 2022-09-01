@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id('_id');
             $table->string('username');
             $table->string('password');
-            $table->string('token');
-            $table->integer('user_level');
+            $table->string('token')->nullable();
+            $table->integer('user_level')->nullable();
             $table->timestamps();
         });
     }
