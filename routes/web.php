@@ -16,9 +16,7 @@
 $router->group(['prefix' => 'testapi/api'], function () use ($router) {
     $router->get('/', 'ProductController@getAllProducts');
     
-    $router->get('/{id}', function ($id) use ($router) {
-        return 'Get product details';
-    });
+    $router->get('/{id}', 'ProductController@getProductDetails');
 
     $router->post('/delete', function () use ($router) {
         return 'Delete a product';

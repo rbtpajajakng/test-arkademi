@@ -22,4 +22,10 @@ class ProductController extends Controller
 
         return response() -> json(['error' => false, 'data' => $allProducts]);
     }
+
+    public function getProductDetails($id) {
+        $productDetails = Product::find($id);
+
+        return response() -> json(['error' => false, 'data' => $productDetails]);
+    }
 }
