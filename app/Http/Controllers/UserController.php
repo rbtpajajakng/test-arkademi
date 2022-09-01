@@ -33,4 +33,22 @@ class UserController extends Controller
 
         return response() -> json(['error' => false, 'success' => true]);
     }
+
+    public function login(Request $request) {
+        $isUserExists = User::where('username', '=', $request->username)
+            ->select('_id as _user_id', 'username', 'token', 'password')
+            ->first();
+        
+        if (!$isUserExists) {
+            return response() -> json(['error' => true, 'data' => 'Username or password is wrong'], 400);
+        }
+
+        if (!app('hash')->check($request->password, $isUserExists->password)) {
+            return response() -> json(['error' => true, 'data' => 'Username or password is wrong'], 400);
+        }
+
+        // Generate token
+
+        return $isUserExists;
+    }
 }
